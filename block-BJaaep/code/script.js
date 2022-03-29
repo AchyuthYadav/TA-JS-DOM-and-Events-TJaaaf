@@ -1,14 +1,31 @@
 
 
-let root = document.querySelector(".wrapper")
-let ul = document.querySelector(".boxes")
-let li = document.querySelector(".box")
+let firstBoxes = document.querySelectorAll(".first li")
 
-boxes.forEach(element => {
-    let box = document.createElement("div")
-    div.classList.add("box")
+// without  Event Deligation
+
+firstBoxes.forEach((ele, index) => {
+   ele.addEventListener("click" , (event) => {
+       event.target.innerText = index + 1;
+
+       setTimeout(() => {
+           event.target.innerText = "";
+       }, 5000);
+   })
 });
 
 
+// with Event Deligation
 
+ let secondBoxes = document.querySelector(".second");
 
+    secondBoxes.addEventListener("click" , (event) => {
+        let text = event.target.dataset.text
+        event.target.innerText= text;
+
+        setTimeout(() => {
+            event.target.innerText = "";
+        }, 5000);
+    })
+   
+    

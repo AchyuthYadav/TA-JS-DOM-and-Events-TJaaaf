@@ -45,8 +45,15 @@ table {
 
 /* general  */
 
+body {
+    line-height: 1.5;
+    font-size: 24px;
+    font-weight: 600; 
+   
+}
+
 .container {
-    width: 300px;
+    max-width: 350px;
     height: 450px;
     background-color: aqua;
     margin: 0 auto;
@@ -57,10 +64,26 @@ h1 {
     font-size: 32px;
     margin: 20px 20px;
 }
-.box1 {
-    width: 225px;
-    height: 75px;
+.result {
+    width: 275px;
+    height: 50px;
     background-color: black;
- 
-
+    border-radius: 10px;
+    border: 1px solid black;
+    margin: 0 auto;
+    color: white;
+    text-align: right;
+    font-weight: 800;
 }
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+button {
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+    margin: 15px;
+}
+
+

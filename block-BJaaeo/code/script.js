@@ -9,16 +9,20 @@
    });
 
    function buttonClick(event) {
+
+        // for making equal button to work
        if (event.target.classList.contains("equal")){
         result.innerText = eval(result.innerText)
         return;
        }
 
+        // for making clear button to work 
        if (event.target.classList.contains("clear")){
         result.innerText = initialValue ;
         return;
        }
-       
+
+        // for initializing zero 
        if (result.innerText == initialValue) {
            result.innerText = event.target.innerText;
        } else {

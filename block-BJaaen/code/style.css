@@ -44,10 +44,37 @@ table {
 
 /* general */
 
-.container {
-    max-width: 300px;
-    height: 300px;
+.container{
+    width: 500px;
     margin: 0 auto;
-    border: 1px solid black;
-    margin-top: 80px;
+    margin-top: 3rem;
 }
+
+h1 {
+    background-color: rgb(226, 190, 122);
+    padding: 1rem;
+    color: rgb(129, 117, 117);
+    text-align: center;
+    font-size: 2.6rem;
+    font-weight: 500;
+}
+
+.flex {
+    display: flex;
+}
+.user{
+    padding: 2rem;
+    line-height: 1.5;
+    background-color: antiquewhite;
+    font-size: 1rem;
+    font-weight: 500;
+}
+.computer {
+    padding: 2rem;
+    line-height: 1.5;
+    background-color: rgb(209, 188, 161);
+
+}
+
+
+

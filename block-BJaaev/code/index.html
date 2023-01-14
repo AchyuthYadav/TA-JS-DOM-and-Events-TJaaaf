@@ -3,31 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TODO Application</title>
     <link rel="stylesheet" href="style.css" />
+    <title>todo application</title>
   </head>
-  <body class="container">
+  <body>
+    <div class="container">
+      <input
+        id = "text"
+        type = "text"
+        name = "todo"
+        placeholder="Enter your todo">
+      <ul>
 
-    <div class="container_1">
-     
-      <input 
-            id="text" 
-            type="text"
-            name="todo"
-            placeholder="Enter Your Todo"
-            >
-            
-            <ul>
-             
-            </ul>
-          
+      </ul>
+      <div>
+        <button class="all">All</button>
+        <button class="active">Active</button>
+        <button class="completed">Completed</button>
+        <button class="clear">Clear completed</button>
+      </div>
     </div>
-    <footer> 
-      <button class="all">All</button>
-      <button class="active">Active</button>
-      <button class="completed">Completed</button>
-      <button class="clear">Clear Completed</button>
-    </footer>
     <script src="./script.js"></script>
   </body>
 </html>

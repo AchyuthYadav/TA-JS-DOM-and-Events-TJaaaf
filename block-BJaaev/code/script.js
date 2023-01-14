@@ -1,90 +1,90 @@
-let inputText = document.querySelector("#text")
-let root = document.querySelector("ul")
+let inputText = document.querySelector('#text');
+let root = document.querySelector('ul');
 
-let defaultSelected = "all"; 
-
-let all = document.querySelector("element")
-let active = document.querySelector("element")
-let completed = document.querySelector("element")
-let clear = document.querySelector("element")
+let clear = document.querySelector('.clear');
+let all = document.querySelector('.all');
+let active = document.querySelector('.active');
+let completed = document.querySelector('.completed');
 
 
-
-
-let allTodos = JSON.parse(localStorage.getItem('todos')) || [];
-
+let allTodos =[];
 function handleInput (event) {
-    console.log(event.keyCode)
-
-    let value = event.target.value;
-
-    if (event.keyCode === 13 && value !== ""){
-    let todo = {
-        name: value,
-        isDone: false,
-    };
-    allTodos.push(todo); 
-
-    event.target.value = "";
-
-    createUI(allTodos, root);
-}
-     localStorage.setItem('todos' , JSON.stringify(allTodos))
+    let value = event.target.value
+    if ( event.keyCode === 13 && event.target.value !== "") {
+        let todo = {name : value, isDone : false};
+        allTodos.push(todo);
+        event.target.value="";
+        createUI();
+    }
 }
 
-
-
-inputText.addEventListener("keyup", handleInput);  
-
-function handleDelete(event){
+function handleDelete (event) {
     let id = event.target.dataset.id;
-
-    localStorage.setItem('todos' , JSON.stringify(allTodos)) 
-    allTodos.splice(id, 1)
-    createUI(allTodos, root);
+    allTodos.splice(id, 1);
+    createUI();
+}
+function handleToggle (event) {
+    let id = event.target.dataset.id;
+    allTodos[id].isDone = !allTodos[id].isDone;
+    createUI();
+}
+function activeTodo (event) {
+    createUI();
+}
+function completedTodo (event) {
+    createUI();
 }
 
-function handleToggle(event){
-        let id = event.target.dataset.id ;
 
-        localStorage.setItem('todos' , JSON.stringify(allTodos)) 
+function createUI (data=allTodos) {
 
-        allTodos[id].isDone = !allTodos[id].isDone;
-}
-
-
-
-
-function createUI(data, rootElm) {
-
-    rootElm.innerHTML = "";
-
-
+    root.innerHTML = "";
     data.forEach((todo, index) => {
 
-    let li = document.createElement("li");
-    
-    let input = document.createElement("input");
-    input.type = "checkbox";
-    input.checked = todo.isDone;
+        let li = document.createElement('li');
+        li.style.display = "flex";
+        li.style.alignItems = "center";
 
-    input.addEventListener("input", handleToggle)
-    input.setAttribute('data-id', index);
+        let input = document.createElement('input');
+        input.type = "checkbox";
+        input.setAttribute("data-id",index);
+        input.addEventListener('input',handleToggle)
+        input.checked = todo.isDone;
 
-    let p = document.createElement("p");
-    p.innerText = todo.name;
+        let p = document.createElement('p');
+        p.innerText = todo.name;
 
-    let span = document.createElement("span");
-    span.innerText = "X";
+        if (input.checked === true) {
+            p.style.textDecoration="line-through";
+        }
 
-    span.setAttribute("data-id", index)
-    span.addEventListener('click', handleDelete)
+        let span=document.createElement('span');
+        span.innerText= "*";
+        span.setAttribute ("data-id",index);
 
+        span.addEventListener('click',handleDelete);
 
-    li.append(input, p, span);
-    
-    rootElm  .append(li)
-    })
-
+        li.append(input, p, span);
+        root.append(li);
+    });   
 }
 
+createUI();
+clear.addEventListener('click',() => {
+    allTodos = allTodos.filter((todo) => !todo.isDone);
+    createUI();
+});
+completed.addEventListener('click',() => {
+    let Completed = allTodos.filter((todo) => todo.isDone);
+    createUI(Completed);
+});
+active.addEventListener('click',() => {
+    let unCompleted = allTodos.filter((todo) => !todo.isDone);
+    createUI(unCompleted);
+});
+all.addEventListener('click',() => {
+    let everyThing = allTodos.map((todo) => todo);
+    createUI(everyThing);
+});
+
+inputText.addEventListener("keyup",handleInput);

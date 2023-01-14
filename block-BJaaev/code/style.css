@@ -42,31 +42,50 @@ table {
 	border-spacing: 0;
 }
 
-
 /* general */
 
 .container {
-    max-width: 500px;
-    height: 400px;
+    width: 500px;
     margin: 0 auto;
-    padding: 0 20px;
-	
+    padding: 100px;
+	margin-top: 100px;
+    background-color: gray;
 }
-
-.container_1 {
-    text-align: center;
-    padding: 35px 15px;
-    width: 300px;
-	background-color: aliceblue;
-
-}
-
 .flex {
     display: flex;
-	margin-left: 55px;
-	padding: 20px;
+    align-items: center;
 }
 
-body {
-	background-color: aqua;
+#text {
+    width: 470px;
+    padding: 1rem;
+	border: burlywood;
+	background-color: burlywood;
+    font-size: 20px;
+    
+}
+
+#ckbox {
+    list-style: disc;
+}
+
+li {
+    margin-top: 2rem;
+    font-size: 1.4rem;
+}
+p {
+    margin-left: 1.5rem;
+    color: rgb(221, 210, 210);
 } 
+span {
+    margin-left: 2rem;
+}
+
+button {
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    border: none;
+    outline: none;
+    border-radius: 1rem;
+}
